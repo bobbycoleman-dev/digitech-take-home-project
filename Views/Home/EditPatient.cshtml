@@ -1,13 +1,13 @@
 ﻿
-@model Patient
+@model DetailFormViewModel
 @{
     ViewData["Title"] = "Edit Patient Data";
 }
 
 <div class="container d-flex flex-column align-items-center">
     <h1>Edit Patient</h1>
-    <p>@Model.LastName, @Model.FirstName</p>
-    <form class="text-start w-50" asp-action="UpdatePatient" asp-route-patientId=@Model.PatientKey asp-controller="Home" method="post">
+    <p>@Model.Patient.LastName, @Model.Patient.FirstName</p>
+    <form class="text-start w-50" asp-action="UpdatePatient" asp-route-patientId=@Model.Patient.PatientKey asp-controller="Home" method="post">
         @await Html.PartialAsync("_DetailForm", Model)
         <div class="text-end">
             <button type="submit" class="btn btn-primary w-25">Save</button>

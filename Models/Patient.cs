@@ -11,7 +11,6 @@ namespace DigitechTakeHomeProject.Models
 		[Key]
 		public int PatientKey { get; set; }
 
-        
 		public int AccountNumber { get; set; }
 
         [Required]

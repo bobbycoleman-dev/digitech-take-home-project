@@ -23,9 +23,16 @@ public class HomeController : Controller
     }
 
     [HttpGet("patients/new")]
-    public IActionResult NewPatient() => View();
+    public IActionResult NewPatient()
+    {
+        DetailFormViewModel detailFormViewModel = new()
+        {
+            isNotEditable = false
+        };
+        return View(detailFormViewModel);
+    }
     
-
+    
     [HttpPost("patients/create")]
     public IActionResult CreatePatient(Patient newPatient)
     {
@@ -48,13 +55,20 @@ public class HomeController : Controller
     public IActionResult ViewPatient(int patientId)
     {
         Patient? PatientToEdit = _db.Patients.FirstOrDefault(p => p.PatientKey == patientId);
+        
 
         if (PatientToEdit == null)
         {
             return RedirectToAction("Index");
         }
 
-        return View(PatientToEdit);
+        DetailFormViewModel detailFormViewModel = new()
+        {
+            Patient = PatientToEdit,
+            isNotEditable = true
+        };
+
+        return View(detailFormViewModel);
     }
 
 
@@ -68,7 +82,13 @@ public class HomeController : Controller
             return RedirectToAction("Index");
         }
 
-        return View(PatientToEdit);
+        DetailFormViewModel detailFormViewModel = new()
+        {
+            Patient = PatientToEdit,
+            isNotEditable = false
+        };
+
+        return View(detailFormViewModel);
     }
 
 
