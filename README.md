@@ -28,6 +28,7 @@
     - Entra password
     - or Entra integrated
 
+### Next Steps
 - Pull the repository
 - Run `dotnet restore`
 - Replace AZURE_SQL_CONNECTIONSTRING in `appsettings.Development.json`
