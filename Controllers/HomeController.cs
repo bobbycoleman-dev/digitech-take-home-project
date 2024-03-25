@@ -34,13 +34,13 @@ public class HomeController : Controller
     [HttpPost("patients/create")]
     public IActionResult CreatePatient(Patient newPatient)
     {
+        if (newPatient.HomePhone == null && newPatient.BusinessPhone == null && newPatient.CellPhone == null)
+        {
+            ModelState.AddModelError("", "At least one phone number must be provided");
+        }
 
         if (!ModelState.IsValid)
         {
-            if (newPatient.HomePhone == null && newPatient.BusinessPhone == null && newPatient.CellPhone == null)
-            {
-                ModelState.AddModelError("", "At least one phone number must be provided");
-            }
             return View("NewPatient", newPatient);
         }
 
@@ -90,8 +90,14 @@ public class HomeController : Controller
     {
         Patient? PatientToEdit = _db.Patients.FirstOrDefault(p => p.PatientKey == patientId);
 
+        if (updatedPatient.HomePhone == null && updatedPatient.BusinessPhone == null && updatedPatient.CellPhone == null)
+        {
+            ModelState.AddModelError("", "At least one phone number must be provided");
+        }
+
         if (!ModelState.IsValid)
         {
+            
             return View("EditPatient", updatedPatient);
         }
 
