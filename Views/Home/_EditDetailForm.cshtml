@@ -43,29 +43,29 @@
         <span class="text-danger" asp-validation-for="ZipCode"></span>
     </div>
 </div>
-<div class="d-flex justify-content-center gap-3">
-    <div class="mb-3 w-100">
+<div class="d-flex justify-content-center gap-3 mb-3">
+    <div class="w-100">
         <label asp-for="HomePhone" class="form-label"></label>
         <input asp-for="HomePhone" class="form-control" placeholder="Home Phone" />
         <span class="text-danger" asp-validation-for="HomePhone"></span>
     </div>
-    <div class="mb-3 w-100">
+    <div class="w-100">
         <label asp-for="BusinessPhone" class="form-label"></label>
         <input asp-for="BusinessPhone" class="form-control" placeholder="Business Phone" />
         <span class="text-danger" asp-validation-for="BusinessPhone"></span>
     </div>
-    <div class="mb-3 w-100">
+    <div class="w-100">
         <label asp-for="CellPhone" class="form-label"></label>
         <input asp-for="CellPhone" class="form-control" placeholder="Cell Phone" />
         <span class="text-danger" asp-validation-for="CellPhone"></span>
     </div>
 </div>
+<div asp-validation-summary="ModelOnly" class="text-danger validation-summary mb-3"></div>
 <div class="mb-3">
     <label asp-for="EmailAddress" class="form-label"></label>
     <input asp-for="EmailAddress" class="form-control" placeholder="Email Address"/>
     <span class="text-danger" asp-validation-for="EmailAddress"></span>
 </div>
-
 
 
 

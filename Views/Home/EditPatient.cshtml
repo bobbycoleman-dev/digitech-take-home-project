@@ -6,7 +6,6 @@
 
 <div class="container d-flex flex-column align-items-center">
     <h1>Edit Patient</h1>
-    <p>@Model.LastName, @Model.FirstName</p>
     <form class="text-start w-50" asp-action="UpdatePatient" asp-route-patientId=@Model.PatientKey asp-controller="Home" method="post">
         @await Html.PartialAsync("_EditDetailForm")
         <div class="text-end">

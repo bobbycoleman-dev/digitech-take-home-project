@@ -7,13 +7,14 @@ namespace DigitechTakeHomeProject.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-    private SqlContext _db;
+    private readonly SqlContext _db;
 
     public HomeController(ILogger<HomeController> logger, SqlContext db)
     {
         _logger = logger;
         _db = db;
     }
+
 
     // Navigate to the Home page and display all patients
     public IActionResult Index()
@@ -22,6 +23,7 @@ public class HomeController : Controller
 
         return View(PatientsList);
     }
+
 
     // Navigate to the New Patient form
     [HttpGet("patients/new")]
@@ -35,7 +37,11 @@ public class HomeController : Controller
 
         if (!ModelState.IsValid)
         {
-            return View("NewPatient");
+            if (newPatient.HomePhone == null && newPatient.BusinessPhone == null && newPatient.CellPhone == null)
+            {
+                ModelState.AddModelError("", "At least one phone number must be provided");
+            }
+            return View("NewPatient", newPatient);
         }
 
         var lastAccountNumber = _db.Patients.Max(a => (int?)a.AccountNumber) ?? 0;

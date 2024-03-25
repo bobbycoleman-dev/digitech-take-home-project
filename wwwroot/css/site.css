@@ -20,3 +20,9 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.validation-summary ul {
+    list-style-type: none; /* Removes bullet points */
+    padding: 0; /* Removes padding, adjust as needed */
+    margin: 0; /* Removes margin, adjust as needed */
+}
