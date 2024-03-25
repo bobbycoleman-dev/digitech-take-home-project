@@ -1,68 +1,71 @@
-﻿@model DetailFormViewModel
+﻿@model Patient
+@{
+    bool editable = true;
+}
 
         <div class="mb-3">
-            <label asp-for="Patient.FirstName" class="form-label"></label>
-            <input asp-for="Patient.FirstName" class="form-control" placeholder="First Name" disabled=@Model.isNotEditable />
-            <span class="text-danger" asp-validation-for="Patient.FirstName"></span>
+            <label asp-for="FirstName" class="form-label"></label>
+            <input asp-for="FirstName" class="form-control" placeholder="First Name" disabled=@editable />
+            <span class="text-danger" asp-validation-for="FirstName"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="Patient.LastName" class="form-label"></label>
-            <input asp-for="Patient.LastName" class="form-control" placeholder="Last Name" disabled=@Model.isNotEditable />
-            <span class="text-danger" asp-validation-for="Patient.LastName"></span>
+            <label asp-for="LastName" class="form-label"></label>
+            <input asp-for="LastName" class="form-control" placeholder="Last Name" disabled=@editable />
+            <span class="text-danger" asp-validation-for="LastName"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="Patient.MiddleInitial" class="form-label"></label>
-            <input asp-for="Patient.MiddleInitial" class="form-control" placeholder="Middle Initial" disabled=@Model.isNotEditable />
-            <span class="text-danger" asp-validation-for="Patient.MiddleInitial"></span>
+            <label asp-for="MiddleInitial" class="form-label"></label>
+            <input asp-for="MiddleInitial" class="form-control" placeholder="Middle Initial" disabled=@editable />
+            <span class="text-danger" asp-validation-for="MiddleInitial"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="Patient.Address1" class="form-label"></label>
-            <input asp-for="Patient.Address1" class="form-control" placeholder="Address 1" disabled=@Model.isNotEditable />
-            <span class="text-danger" asp-validation-for="Patient.Address1"></span>
+            <label asp-for="Address1" class="form-label"></label>
+            <input asp-for="Address1" class="form-control" placeholder="Address 1" disabled=@editable />
+            <span class="text-danger" asp-validation-for="Address1"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="Patient.Address2" class="form-label"></label>
-            <input asp-for="Patient.Address2" class="form-control" placeholder="Address 2" disabled=@Model.isNotEditable />
-            <span class="text-danger" asp-validation-for="Patient.Address2"></span>
+            <label asp-for="Address2" class="form-label"></label>
+            <input asp-for="Address2" class="form-control" placeholder="Address 2" disabled=@editable />
+            <span class="text-danger" asp-validation-for="Address2"></span>
         </div>
         <div class="d-flex justify-content-center gap-3">
             <div class="mb-3 w-100">
-                <label asp-for="Patient.City" class="form-label"></label>
-                <input asp-for="Patient.City" class="form-control" placeholder="City" disabled=@Model.isNotEditable />
-                <span class="text-danger" asp-validation-for="Patient.City"></span>
+                <label asp-for="City" class="form-label"></label>
+                <input asp-for="City" class="form-control" placeholder="City" disabled=@editable />
+                <span class="text-danger" asp-validation-for="City"></span>
             </div>
             <div class="mb-3 w-100">
-                <label asp-for="Patient.State" class="form-label"></label>
-                <input asp-for="Patient.State" class="form-control" placeholder="State" disabled=@Model.isNotEditable />
-                <span class="text-danger" asp-validation-for="Patient.State"></span>
+                <label asp-for="State" class="form-label"></label>
+                <input asp-for="State" class="form-control" placeholder="State" disabled=@editable />
+                <span class="text-danger" asp-validation-for="State"></span>
             </div>
             <div class="mb-3 w-100">
-                <label asp-for="Patient.ZipCode" class="form-label"></label>
-                <input asp-for="Patient.ZipCode" class="form-control" placeholder="Zip Code" disabled=@Model.isNotEditable />
-                <span class="text-danger" asp-validation-for="Patient.ZipCode"></span>
+                <label asp-for="ZipCode" class="form-label"></label>
+                <input asp-for="ZipCode" class="form-control" placeholder="Zip Code" disabled=@editable />
+                <span class="text-danger" asp-validation-for="ZipCode"></span>
             </div>
         </div>
         <div class="d-flex justify-content-center gap-3">
             <div class="mb-3 w-100">
-                <label asp-for="Patient.HomePhone" class="form-label"></label>
-                <input asp-for="Patient.HomePhone" class="form-control" placeholder="Home Phone" disabled=@Model.isNotEditable />
-                <span class="text-danger" asp-validation-for="Patient.HomePhone"></span>
+                <label asp-for="HomePhone" class="form-label"></label>
+                <input asp-for="HomePhone" class="form-control" placeholder="Home Phone" disabled=@editable />
+                <span class="text-danger" asp-validation-for="HomePhone"></span>
             </div>
             <div class="mb-3 w-100">
-                <label asp-for="Patient.BusinessPhone" class="form-label"></label>
-                <input asp-for="Patient.BusinessPhone" class="form-control" placeholder="Business Phone" disabled=@Model.isNotEditable />
-                <span class="text-danger" asp-validation-for="Patient.BusinessPhone"></span>
+                <label asp-for="BusinessPhone" class="form-label"></label>
+                <input asp-for="BusinessPhone" class="form-control" placeholder="Business Phone" disabled=@editable />
+                <span class="text-danger" asp-validation-for="BusinessPhone"></span>
             </div>
             <div class="mb-3 w-100">
-                <label asp-for="Patient.CellPhone" class="form-label"></label>
-                <input asp-for="Patient.CellPhone" class="form-control" placeholder="Cell Phone" disabled=@Model.isNotEditable />
-                <span class="text-danger" asp-validation-for="Patient.CellPhone"></span>
+                <label asp-for="CellPhone" class="form-label"></label>
+                <input asp-for="CellPhone" class="form-control" placeholder="Cell Phone" disabled=@editable />
+                <span class="text-danger" asp-validation-for="CellPhone"></span>
             </div>
         </div>
         <div class="mb-3">
-            <label asp-for="Patient.EmailAddress" class="form-label"></label>
-            <input asp-for="Patient.EmailAddress" class="form-control" placeholder="Email Address" disabled=@Model.isNotEditable />
-            <span class="text-danger" asp-validation-for="Patient.EmailAddress"></span>
+            <label asp-for="EmailAddress" class="form-label"></label>
+            <input asp-for="EmailAddress" class="form-control" placeholder="Email Address" disabled=@editable />
+            <span class="text-danger" asp-validation-for="EmailAddress"></span>
         </div>
         
     

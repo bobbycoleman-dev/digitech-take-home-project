@@ -15,6 +15,7 @@ public class HomeController : Controller
         _db = db;
     }
 
+    // Navigate to the Home page and display all patients
     public IActionResult Index()
     {
         List<Patient> PatientsList = _db.Patients.ToList();
@@ -22,17 +23,12 @@ public class HomeController : Controller
         return View(PatientsList);
     }
 
+    // Navigate to the New Patient form
     [HttpGet("patients/new")]
-    public IActionResult NewPatient()
-    {
-        DetailFormViewModel detailFormViewModel = new()
-        {
-            isNotEditable = false
-        };
-        return View(detailFormViewModel);
-    }
+    public IActionResult NewPatient() => View();
     
-    
+
+    // Create a new patient and add to the database
     [HttpPost("patients/create")]
     public IActionResult CreatePatient(Patient newPatient)
     {
@@ -51,27 +47,22 @@ public class HomeController : Controller
     }
 
 
+    // Display data for a single patient
     [HttpGet("patients/view/{patientId}")]
     public IActionResult ViewPatient(int patientId)
     {
         Patient? PatientToEdit = _db.Patients.FirstOrDefault(p => p.PatientKey == patientId);
-        
 
         if (PatientToEdit == null)
         {
             return RedirectToAction("Index");
         }
 
-        DetailFormViewModel detailFormViewModel = new()
-        {
-            Patient = PatientToEdit,
-            isNotEditable = true
-        };
-
-        return View(detailFormViewModel);
+        return View(PatientToEdit);
     }
 
 
+    // Display the Edit Patient form
     [HttpGet("patients/edit/{patientId}")]
     public IActionResult EditPatient(int patientId)
     {
@@ -82,16 +73,12 @@ public class HomeController : Controller
             return RedirectToAction("Index");
         }
 
-        DetailFormViewModel detailFormViewModel = new()
-        {
-            Patient = PatientToEdit,
-            isNotEditable = false
-        };
-
-        return View(detailFormViewModel);
+     
+        return View(PatientToEdit);
     }
 
 
+    // Update the patient data in the database
     [HttpPost("patients/update/{patientId}")]
     public IActionResult UpdatePatient(Patient updatedPatient, int patientId)
     {
@@ -99,7 +86,7 @@ public class HomeController : Controller
 
         if (!ModelState.IsValid)
         {
-            return View("EditPatient", PatientToEdit);
+            return View("EditPatient", updatedPatient);
         }
 
         if (PatientToEdit != null)
@@ -119,13 +106,12 @@ public class HomeController : Controller
 
             _db.SaveChanges();
         }
-       
-        return RedirectToAction("Index");
 
+        return RedirectToAction("Index");
 
     }
 
-    
+
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
