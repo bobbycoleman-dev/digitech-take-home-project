@@ -1,6 +1,5 @@
 ﻿@{
     ViewData["Title"] = "Patients";
-    
 }
 @model List<Patient>
 
@@ -9,8 +8,6 @@
     <div class="text-end mb-3">
         <a href="/patients/new" class="btn btn-success w-25">Add New Patient</a>
     </div>
-    
-    
     <table class="table  text-center table-hover">
         <thead>
             <tr>
@@ -39,25 +36,23 @@
                 {
                     phoneNumber = p.CellPhone;
                 }
-                
-                    <tr ondblclick="viewPatient(@p.PatientKey)" style="cursor: pointer">
-                        <td>@p.AccountNumber</td>
-                        <td>@p.LastName, @p.FirstName</td>
-                        <td>@p.City</td>
-                        <td>@p.State</td>
-                        <td>@p.ZipCode</td>
-                        <td>@phoneNumber</td>
-                        <td><a href="/patients/edit/@p.PatientKey" class="btn btn-secondary btn-sm">Edit</a></td>
-                    </tr>
-                
+
+                <tr ondblclick="viewPatient(@p.PatientKey)" style="cursor: pointer">
+                    <td>@p.AccountNumber</td>
+                    <td>@p.LastName, @p.FirstName</td>
+                    <td>@p.City</td>
+                    <td>@p.State</td>
+                    <td>@p.ZipCode</td>
+                    <td>@phoneNumber</td>
+                    <td><a href="/patients/edit/@p.PatientKey" class="btn btn-secondary btn-sm">Edit</a></td>
+                </tr>
+
             }
         </tbody>
     </table>
-    <script>
-        function viewPatient(patientId) {
+    <script>function viewPatient(patientId) {
             window.location.href = `/patients/view/${patientId}`
-        }
-    </script>
-    
+        }</script>
+
 </div>
 

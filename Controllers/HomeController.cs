@@ -44,7 +44,7 @@ public class HomeController : Controller
             return View("NewPatient", newPatient);
         }
 
-        var lastAccountNumber = _db.Patients.Max(a => (int?)a.AccountNumber) ?? 0;
+        int lastAccountNumber = _db.Patients.Max(a => (int?)a.AccountNumber) ?? 0;
         newPatient.AccountNumber = lastAccountNumber + 1;
         _db.Add(newPatient);
         _db.SaveChanges();
@@ -97,7 +97,6 @@ public class HomeController : Controller
 
         if (!ModelState.IsValid)
         {
-            
             return View("EditPatient", updatedPatient);
         }
 

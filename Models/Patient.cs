@@ -7,7 +7,6 @@ using System.Reflection;
 
 namespace DigitechTakeHomeProject.Models
 {
-   
     public class Patient
     {
         [Key]
